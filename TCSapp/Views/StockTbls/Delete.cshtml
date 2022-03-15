@@ -1,0 +1,112 @@
+﻿@model TCSapp.Models.StockTbl
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>StockTbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ticker)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ticker)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StockDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StockDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpeningnPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpeningnPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.High)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.High)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Low)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Low)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClosingPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClosingPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdjustedClosing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdjustedClosing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Volume)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Volume)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductTypeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TradeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TradeId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

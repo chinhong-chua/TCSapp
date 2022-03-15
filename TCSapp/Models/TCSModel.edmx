@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TCSdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="StockTbl">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="StockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ticker" Type="varchar" MaxLength="50" />
+          <Property Name="StockDate" Type="datetime" />
+          <Property Name="OpeningPrice" Type="varchar" MaxLength="50" />
+          <Property Name="High" Type="varchar" MaxLength="50" />
+          <Property Name="Low" Type="varchar" MaxLength="50" />
+          <Property Name="ClosingPrice" Type="varchar" MaxLength="50" />
+          <Property Name="AdjustedClosing" Type="varchar" MaxLength="50" />
+          <Property Name="Volume" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="ProductTypeId" Type="int" />
+          <Property Name="TradeId" Type="int" />
+        </EntityType>
+        <EntityType Name="TradeTbl">
+          <Key>
+            <PropertyRef Name="TradeID" />
+          </Key>
+          <Property Name="TradeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TradeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TradeDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="TradeDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="TradeQuantity" Type="nvarchar" MaxLength="50" />
+          <Property Name="TradePrice" Type="nvarchar" MaxLength="50" />
+          <Property Name="TradeValue" Type="nvarchar" MaxLength="50" />
+          <Property Name="TradeMarket" Type="nvarchar" MaxLength="50" />
+          <Property Name="TradeType" Type="nvarchar" MaxLength="50" />
+          <Property Name="TradeDeposit" Type="nvarchar" MaxLength="50" />
+          <Property Name="TradeAmount" Type="nvarchar" MaxLength="50" />
+          <Property Name="TradeSL" Type="nvarchar" MaxLength="50" />
+          <Property Name="TradeTP" Type="nvarchar" MaxLength="50" />
+          <Property Name="TradeLoss" Type="nvarchar" MaxLength="50" />
+          <Property Name="TradeProfit" Type="nvarchar" MaxLength="50" />
+          <Property Name="TradeZone" Type="nvarchar" MaxLength="50" />
+          <Property Name="TradeLimit" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="TCSdbModelStoreContainer">
+          <EntitySet Name="StockTbl" EntityType="Self.StockTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TradeTbl" EntityType="Self.TradeTbl" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TCSdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TradeTbl">
+          <Key>
+            <PropertyRef Name="TradeID" />
+          </Key>
+          <Property Name="TradeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TradeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TradeDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TradeDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TradeQuantity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TradePrice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TradeValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TradeMarket" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TradeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TradeDeposit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TradeAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TradeSL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TradeTP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TradeLoss" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TradeProfit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TradeZone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TradeLimit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="TCSdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TradeTbls" EntityType="Self.TradeTbl" />
+          <EntitySet Name="StockTbls" EntityType="TCSdbModel.StockTbl" />
+        </EntityContainer>
+        <EntityType Name="StockTbl">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="StockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ticker" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StockDate" Type="DateTime" Precision="3" />
+          <Property Name="OpeningPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="High" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Low" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ClosingPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdjustedClosing" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Volume" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ProductTypeId" Type="Int32" />
+          <Property Name="TradeId" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TCSdbModelStoreContainer" CdmEntityContainer="TCSdbEntities">
+          <EntitySetMapping Name="TradeTbls">
+            <EntityTypeMapping TypeName="TCSdbModel.TradeTbl">
+              <MappingFragment StoreEntitySet="TradeTbl">
+                <ScalarProperty Name="TradeID" ColumnName="TradeID" />
+                <ScalarProperty Name="TradeName" ColumnName="TradeName" />
+                <ScalarProperty Name="TradeDescription" ColumnName="TradeDescription" />
+                <ScalarProperty Name="TradeDate" ColumnName="TradeDate" />
+                <ScalarProperty Name="TradeQuantity" ColumnName="TradeQuantity" />
+                <ScalarProperty Name="TradePrice" ColumnName="TradePrice" />
+                <ScalarProperty Name="TradeValue" ColumnName="TradeValue" />
+                <ScalarProperty Name="TradeMarket" ColumnName="TradeMarket" />
+                <ScalarProperty Name="TradeType" ColumnName="TradeType" />
+                <ScalarProperty Name="TradeDeposit" ColumnName="TradeDeposit" />
+                <ScalarProperty Name="TradeAmount" ColumnName="TradeAmount" />
+                <ScalarProperty Name="TradeSL" ColumnName="TradeSL" />
+                <ScalarProperty Name="TradeTP" ColumnName="TradeTP" />
+                <ScalarProperty Name="TradeLoss" ColumnName="TradeLoss" />
+                <ScalarProperty Name="TradeProfit" ColumnName="TradeProfit" />
+                <ScalarProperty Name="TradeZone" ColumnName="TradeZone" />
+                <ScalarProperty Name="TradeLimit" ColumnName="TradeLimit" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockTbls">
+            <EntityTypeMapping TypeName="TCSdbModel.StockTbl">
+              <MappingFragment StoreEntitySet="StockTbl">
+                <ScalarProperty Name="TradeId" ColumnName="TradeId" />
+                <ScalarProperty Name="ProductTypeId" ColumnName="ProductTypeId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="AdjustedClosing" ColumnName="AdjustedClosing" />
+                <ScalarProperty Name="ClosingPrice" ColumnName="ClosingPrice" />
+                <ScalarProperty Name="Low" ColumnName="Low" />
+                <ScalarProperty Name="High" ColumnName="High" />
+                <ScalarProperty Name="OpeningPrice" ColumnName="OpeningPrice" />
+                <ScalarProperty Name="StockDate" ColumnName="StockDate" />
+                <ScalarProperty Name="Ticker" ColumnName="Ticker" />
+                <ScalarProperty Name="StockID" ColumnName="StockID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

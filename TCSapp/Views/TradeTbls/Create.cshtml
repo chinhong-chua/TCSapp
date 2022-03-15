@@ -1,0 +1,358 @@
+﻿@model TCSapp.Models.TradeTbl
+
+@{
+    ViewBag.Title = "Trading";
+
+
+}
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.TradeProfit)
+    @*@Html.Hidden("TradeProfit")*@
+
+    @*<div class="page-header">
+            <h4 class="page-title">Forms</h4>
+            <ul class="breadcrumbs">
+                <li class="nav-home">
+                    <a href="#">
+                        <i class="flaticon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Forms</a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Basic Form</a>
+                </li>
+            </ul>
+        </div>*@
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Trade Order</div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card card-primary bg-info-gradient">
+                                <div class="card-body">
+                                    <h4 class="mb-1 fw-bold"><i class="bg-danger2">Important Notes</i></h4>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="card card-dark bg-primary-gradient">
+                                <div class="card-body pb-0">
+                                    @if (@ViewBag.SuccessOrder <= 0)
+                                    {
+                                        <div class="h1 fw-bold float-right" style="color: #ff1a1a">@ViewBag.SuccessOrder</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="h1 fw-bold float-right" style="color: greenyellow">@ViewBag.SuccessOrder</div>
+                                    }
+                                    <h1 class="mb-2">@ViewBag.OrderNumber</h1>
+                                    <p>Total Trade for @DateTime.Now.Day / @DateTime.Now.Month</p>
+                                    <div class="pull-in sparkline-fix chart-as-background">
+                                        <div id="lineChart3"><canvas width="327" height="70" style="display: inline-block; width: 327px; height: 70px; vertical-align: top;"></canvas></div>
+                                    </div>
+                                </div>
+                            </div>
+                            @if (ViewBag.todayProfit <= 0)
+                            {
+                                <div class="card card-dark  bg-danger2">
+                                    <div class="card-body pb-0">
+                                        <div class="h1 fw-bold float-right">@ViewBag.todayProfit</div>
+
+                                        @if (ViewBag.todayProfit == 0)
+                                        {
+                                            <h2 class="mb-2">
+                                                Neutral
+                                            </h2>
+                                        }
+                                        else
+                                        {
+                                            <h2 class="mb-2">
+                                                Loss
+                                            </h2>
+                                        }
+
+
+                                        <p>P/L for Today</p>
+
+                                        <div class="pull-in sparkline-fix chart-as-background">
+                                            <div id="lineChart"><canvas width="327" height="70" style="display: inline-block; width: 327px; height: 70px; vertical-align: top;"></canvas></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="card card-dark  bg-success2">
+                                    <div class="card-body pb-0">
+                                        <div class="h1 fw-bold float-right">@ViewBag.todayProfit</div>
+                                        <h2 class="mb-2">Profit</h2>
+                                        <p>P/L for Today</p>
+                                        <div class="pull-in sparkline-fix chart-as-background">
+                                            <div id="lineChart"><canvas width="327" height="70" style="display: inline-block; width: 327px; height: 70px; vertical-align: top;"></canvas></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                            @if (@ViewBag.weekProfit <= 0)
+                            {
+                                <div class="card card-dark  bg-danger2">
+                                    <div class="card-body pb-0">
+                                        <div class="h1 fw-bold float-right">@ViewBag.weekProfit</div>
+
+                                        @if (ViewBag.weekProfit == 0)
+                                        {
+                                            <h2 class="mb-2">
+                                                Neutral
+                                            </h2>
+                                        }
+                                        else
+                                        {
+                                            <h2 class="mb-2">
+                                                Loss
+                                            </h2>
+                                        }
+                                        <p>P/L for This Week</p>
+                                        <div class="pull-in sparkline-fix chart-as-background">
+                                            <div id="lineChart2"><canvas width="327" height="70" style="display: inline-block; width: 327px; height: 70px; vertical-align: top;"></canvas></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="card card-dark  bg-success2">
+                                    <div class="card-body pb-0">
+                                        <div class="h1 fw-bold float-right">@ViewBag.weekProfit</div>
+                                        <h2 class="mb-2">Profit</h2>
+                                        <p>P/L for This Week</p>
+                                        <div class="pull-in sparkline-fix chart-as-background">
+                                            <div id="lineChart2"><canvas width="327" height="70" style="display: inline-block; width: 327px; height: 70px; vertical-align: top;"></canvas></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+
+                        <div class="col-md-6 col-lg-4">
+                            @*<div class="form-group">
+                                    @Html.LabelFor(model => model.TradeName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.TradeName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TradeName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.TradeDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.TradeDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TradeDescription, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>*@
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TradeDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.TradeDate, new { htmlAttributes = new { @class = "form-control datepicker", @Value = DateTime.Now.Date.ToString("dd/MM/yyyy") } })
+                                    @Html.ValidationMessageFor(model => model.TradeDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <script>
+                                $(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+                            </script>
+                            @*<div class="form-group">
+                                    @Html.LabelFor(model => model.TradeQuantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.TradeQuantity, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TradeQuantity, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.TradePrice, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.TradePrice, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TradePrice, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>*@
+
+                            @*<div class="form-group">
+                                    @Html.LabelFor(model => model.TradeValue, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.TradeValue, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TradeValue, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>*@
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TradeMarket, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+
+                                    @*<select class="form-control form-control" id="TradeMarket" name="TradeMarket">
+                                            <option>SPY</option>
+                                            <option>TSLA</option>
+                                            <option>AAPL</option>
+                                            <option>MSFT</option>
+                                            <option>USO</option>
+                                            <option>WMT</option>
+                                            <option>JPM</option>
+                                            <option>ILMN</option>
+
+                                        </select>*@
+                                    @*@Html.DropDownList("TradeMarket",new SelectList(ViewBag.stocklist), new { @class = "form-control" })*@
+                                    @Html.DropDownListFor(model => model.TradeMarket, new SelectList(ViewBag.stocklist, "Text", "Text", 1), "Please select", new { @class = "form-control" } )
+                                    @*@Html.DropDownList("TradeMarket", new SelectList(ViewBag.ListSiteClass, "Value", "Text"), "Select")*@
+                                    @*@Html.EditorFor(model => model.TradeMarket, new { htmlAttributes = new { @class = "form-control" } })*@
+
+                                    @*@Html.DropDownListFor(m => m.TradeMarket, ViewBag.stocklist, "--Select--")*@
+                                    @Html.ValidationMessageFor(model => model.TradeMarket, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TradeType, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <select class="form-control form-control" id="TradeType" name="TradeType">
+                                        <option>BUY</option>
+                                        <option>SELL</option>
+                                    </select>
+                                    @*@Html.EditorFor(model => model.TradeType, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @Html.ValidationMessageFor(model => model.TradeType, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            @*<div class="form-group">
+                                    @Html.LabelFor(model => model.TradeDeposit, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.TradeDeposit, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TradeDeposit, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>*@
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TradeAmount, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.TradeAmount, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.TradeAmount, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-4">
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TradeSL, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.TradeSL, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.TradeSL, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TradeTP, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.TradeTP, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.TradeTP, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            @*<div class="form-group">
+                                    @Html.LabelFor(model => model.TradeLoss, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.TradeLoss, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TradeLoss, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.TradeProfit, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.TradeProfit, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TradeProfit, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>*@
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TradeZone, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <select class="form-control form-control" id="TradeZone" name="TradeZone">
+                                        <option>0-50</option>
+                                        <option>50-100</option>
+                                        <option>100-150</option>
+                                        <option>150-200</option>
+                                        <option>200-300</option>
+                                        <option>300-400</option>
+                                        <option>400-500</option>
+                                        <option>500+</option>
+                                    </select>
+                                    @*@Html.EditorFor(model => model.TradeZone, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @Html.ValidationMessageFor(model => model.TradeZone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            @*<div class="form-group">
+                                    @Html.LabelFor(model => model.TradeLimit, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.TradeLimit, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TradeLimit, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>*@
+
+                            @*<div class="form-group">
+                                    @Html.LabelFor(model => model.UserID, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.UserID, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.UserID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>*@
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Trade" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+@*<div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

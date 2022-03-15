@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCSapp", "TCSapp\TCSapp.csproj", "{AAEEF54A-2E26-45A3-8B75-851B9ACDA77C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AAEEF54A-2E26-45A3-8B75-851B9ACDA77C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAEEF54A-2E26-45A3-8B75-851B9ACDA77C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAEEF54A-2E26-45A3-8B75-851B9ACDA77C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAEEF54A-2E26-45A3-8B75-851B9ACDA77C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1915A69B-8C4A-464A-88C4-E9A8FF0C6EB4}
+	EndGlobalSection
+EndGlobal

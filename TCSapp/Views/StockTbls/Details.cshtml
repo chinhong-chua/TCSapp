@@ -1,0 +1,106 @@
+﻿@model TCSapp.Models.StockTbl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>StockTbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ticker)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ticker)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StockDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StockDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpeningnPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpeningnPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.High)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.High)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Low)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Low)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClosingPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClosingPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdjustedClosing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdjustedClosing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Volume)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Volume)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductTypeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TradeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TradeId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StockID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,79 @@
+﻿@model TCSapp.Models.TradeTbl
+
+@{
+    ViewBag.Title = "Portfolio";
+
+
+}
+
+
+<script type="text/javascript">
+
+            window.onload = function () {
+
+
+                var pieChart = document.getElementById('pieChart').getContext('2d');
+
+                var myPieChart = new Chart(pieChart, {
+                    type: 'pie',
+                    data: {
+                        datasets: [{
+                            data: [50, 10, 15],
+                            backgroundColor: ["#1d7af3", "#f3545d", "#fdaf4b"],
+                            borderWidth: 0
+                        }],
+                        labels: ['Stock', 'Commodities', 'Others']
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                fontColor: 'rgb(154, 154, 154)',
+                                fontSize: 11,
+                                usePointStyle: true,
+                                padding: 20
+                            }
+                        },
+                        pieceLabel: {
+                            render: 'percentage',
+                            fontColor: 'white',
+                            fontSize: 14,
+                        },
+                        tooltips: false,
+                        layout: {
+                            padding: {
+                                left: 20,
+                                right: 20,
+                                top: 20,
+                                bottom: 20
+                            }
+                        }
+                    }
+                })
+
+    };
+
+   
+</script>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <div id="chart-container">
+        <canvas id="pieChart"></canvas>
+    </div>
+
+}
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

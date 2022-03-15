@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>test d3</h2>
+
+<p id="d3p"></p>
+
+<script type="text/javascript">
+    var paragraphs = document.getElementsByTagName("p");
+    //for (var i = 0; i < paragraphs.length; i++) {
+    //    var paragraph = paragraphs.item(i);
+    //    paragraph.style.setProperty("color", "blue", null);
+    //}
+
+    d3.csv("/D3csv/crude-birth-rate.csv", function (data) {
+        //alert("data collected");
+        //var jsonData = JSON.stringify(data);
+        //alert(jsonData);
+        var jsonData = JSON.stringify(data);
+        //alert(jsonData);
+        var testData = JSON.parse(jsonData);
+        //alert(testData);
+
+
+        var s = JSON.parse(data);
+        //for (var i = 0; i < s.length; i++) {
+        //    var ticker = s[i]["Ticker"];
+        //    var date = s[i]["Date"];
+        //    var open = s[i]["Open"];
+        //    var high = s[i]["High"];
+        //    var low = s[i]["Low"];
+        //    var close = s[i]["Close"];
+        //    var volume = s[i]["Volume"];
+
+        //    data.addRow([{ v: new Date(date), f: date }, open,
+        //        high, low, close, volume]);
+        //alert(testData.length);
+
+        
+
+    });
+</script>
